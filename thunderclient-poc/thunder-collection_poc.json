@@ -1,0 +1,37 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "poc",
+    "dateExported": "2021-07-01T16:41:28.045Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "containerId": "",
+            "sortNum": 20000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                }
+            ],
+            "colId": "d844829e-3f29-4241-9c49-bb9737512aba",
+            "name": "get-user",
+            "url": "https://run.mocky.io/v3/{{path}}?filter={{filter}}",
+            "method": "GET",
+            "modified": "2021-07-01T16:41:01.126Z",
+            "created": "2021-07-01T16:36:38.545Z",
+            "_id": "46908202-31f4-4b67-9c4f-8850453e918c",
+            "params": [
+                {
+                    "name": "filter",
+                    "value": "{{filter}}"
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
