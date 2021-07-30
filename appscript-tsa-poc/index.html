@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps Script POC</title>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+    };
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+
+
+            var connectionId = getUrlParameter('id');
+            if (connectionId) {
+                var macroState = JSON.parse(localStorage.getItem("macro_storage"));
+                var encryptedConnection = getUrlParameter('encryptedConnection');
+                var role = getUrlParameter('role');
+                var nsAccount = getUrlParameter('nsAccount');
+                var url = macroState.redirect_uri + '?state=' + macroState.state + '&_success=true&encryptedConnection=' + encryptedConnection + '&role=' + role + '&nsAccount=' + nsAccount;
+
+                window.location.href = url;
+            } else {
+                var redirect_uri = getUrlParameter('redirect_uri');
+                var state = getUrlParameter('state');
+                localStorage.setItem("macro_storage", JSON.stringify({ "redirect_uri": redirect_uri, "state": state }));
+                window.location.href = 'https://apis.cega.cloudextend.dev/tsa/init/account/tstdrv1291203';
+            }
+
+            // var redirect_uri =  getUrlParameter('redirect_uri');
+            // var state = getUrlParameter('state');
+            // var url = redirect_uri + '?state=' + state + '&_success=true&encryptedConnection=123';
+            // window.location.href = url;
+            // $.get( "https://ukr.ap.ngrok.io/http_demo.js", function( data ) {
+            //     var redirect_uri =  getUrlParameter('redirect_uri');
+            //     var state = getUrlParameter('state');
+            //     var url = redirect_uri + '?state=' + state + '&_success=true'
+            //     console.log('data loaded: ' + JSON.stringify(data));
+            //     window.location.href = url;
+            // });
+
+            
+            //callback : https://apis.cega.cloudextend.dev/tsa/callback 
+            //APP ID: C63EFB73-EA01-4932-B267-03CBE67B94DD
+            //id : dc78c522481f688a9c3929c4e059e1b2f3f8e10d0553378ed8bb3d357fe2be39bd
+            //secret : d972d027f901424d162998e088afc24f72d084b7c43c40c266956d4f346458a59d
+        });
+    </script>
+
+</head>
+<body>
+</body>
+</html>
