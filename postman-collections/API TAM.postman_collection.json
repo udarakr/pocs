@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "ab41ab0c-25f8-4704-9d90-6e68ea29c63d",
+		"name": "API TAM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/connections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/connections?orgID&ownerID&ownerIDs&accountID&subID&environment&connectionEmail&normalize&productCode&connectionType&connectionId",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connections"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": null
+						},
+						{
+							"key": "ownerID",
+							"value": null
+						},
+						{
+							"key": "ownerIDs",
+							"value": null
+						},
+						{
+							"key": "accountID",
+							"value": null
+						},
+						{
+							"key": "subID",
+							"value": null
+						},
+						{
+							"key": "environment",
+							"value": null
+						},
+						{
+							"key": "connectionEmail",
+							"value": null
+						},
+						{
+							"key": "normalize",
+							"value": null
+						},
+						{
+							"key": "productCode",
+							"value": null
+						},
+						{
+							"key": "connectionType",
+							"value": null
+						},
+						{
+							"key": "connectionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connections",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"accountID\": \"\",\n    \"subID\": \"\",\n    \"orgID\": \"\",\n    \"ownerID\": \"\",\n    \"runtimeInfo\": {\n        \"conEmail\": \"\",\n        \"connectionId\": \"\"\n    },\n    \"productCode\": \"\",\n    \"connectionType\": \"\",\n    \"account\": {\n        \"name\": \"\",\n        \"environment\": \"\",\n        \"locked\": \"true|false\",\n        \"orgID\": \"\",\n        \"subID\": \"\",\n        \"createdDate\": \"\",\n        \"description\": \"\",\n        \"type\": \"\",\n        \"isOneWorld\": true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connections",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"accountID\": \"\",\n    \"subID\": \"\",\n    \"orgID\": \"\",\n    \"ownerID\": \"\",\n    \"runtimeInfo\": {\n        \"conEmail\": \"\",\n        \"connectionId\": \"\"\n    },\n    \"productCode\": \"\",\n    \"connectionType\": \"\",\n    \"account\": {\n        \"id\": \"\",\n        \"name\": \"\",\n        \"environment\": \"\",\n        \"locked\": \"\",\n        \"orgID\": \"\",\n        \"subID\": \"\",\n        \"createdDate\": \"\",\n        \"description\": \"\",\n        \"type\": \"\",\n        \"isOneWorld\": true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": \"\",\n        \"name\": \"\",\n        \"environment\": \"\",\n        \"locked\": \"\",\n        \"orgID\": \"\",\n        \"subID\": \"\",\n        \"createdDate\": \"\",\n        \"description\": \"\",\n        \"type\": \"\",\n        \"isOneWorld\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts/roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts/roles?accountIDs",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts",
+						"roles"
+					],
+					"query": [
+						{
+							"key": "accountIDs",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connections",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subID\": \"\",\n    \"ownerID\": \"\",\n    \"orgID\": \"\",\n    \"ownerID\": \"\",\n    \"ownerIDs\": \"\",\n    \"accountID\": \"\",\n    \"subID\": \"\",\n    \"environment\": \"\",\n    \"connectionEmail\": \"\",\n    \"normalize\": \"\",\n    \"productCode\": \"\",\n    \"connectionType\": \"\",\n    \"connectionId\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connections",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id/assign-users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id/assign-users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id",
+						"assign-users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id/users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id",
+						"users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts/:id/roles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"roles\": [{\n        \"id\": \"\",\n        \"name\": \"\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts/:id/roles",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts",
+						":id",
+						"roles"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts?orgID&subID&type&environment&normalize",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": null
+						},
+						{
+							"key": "subID",
+							"value": null
+						},
+						{
+							"key": "type",
+							"value": null
+						},
+						{
+							"key": "environment",
+							"value": null
+						},
+						{
+							"key": "normalize",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id/unassign-users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id/unassign-users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id",
+						"unassign-users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

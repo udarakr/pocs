@@ -1,0 +1,1167 @@
+{
+	"info": {
+		"_postman_id": "6006ce2b-a2ea-455e-b32b-3c8cded40d83",
+		"name": "API TAM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/connections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/connections?orgID&ownerID&ownerIDs&accountID&subID&environment&connectionEmail&normalize&productCode&connectionType&connectionId",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connections"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": null
+						},
+						{
+							"key": "ownerID",
+							"value": null
+						},
+						{
+							"key": "ownerIDs",
+							"value": null
+						},
+						{
+							"key": "accountID",
+							"value": null
+						},
+						{
+							"key": "subID",
+							"value": null
+						},
+						{
+							"key": "environment",
+							"value": null
+						},
+						{
+							"key": "connectionEmail",
+							"value": null
+						},
+						{
+							"key": "normalize",
+							"value": null
+						},
+						{
+							"key": "productCode",
+							"value": null
+						},
+						{
+							"key": "connectionType",
+							"value": null
+						},
+						{
+							"key": "connectionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id[existing]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Returns only one connection with given id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(\"5ed8e6938587d90da8dcb59f\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5ed8e6938587d90da8dcb59f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id[non-existent]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response body should be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "dummy-id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id[empty]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404); //TODO check the status",
+							"});",
+							"",
+							"pm.test(\"Response body should be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Returns only one account with given id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    //TODO verify if we receive only one account",
+							"    pm.expect(jsonData.id).to.eql(\"591970251d8c16224429c71b\");",
+							"});",
+							"",
+							"pm.test(\"Response body should not be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.not.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "591970251d8c16224429c71b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id[empty]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response body should be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id[non-existent]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404); //todo verify",
+							"});",
+							"",
+							"pm.test(\"Response body should be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "dummy-account"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connections",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"accountID\": \"\",\n    \"subID\": \"\",\n    \"orgID\": \"\",\n    \"ownerID\": \"\",\n    \"runtimeInfo\": {\n        \"conEmail\": \"\",\n        \"connectionId\": \"\"\n    },\n    \"productCode\": \"\",\n    \"connectionType\": \"\",\n    \"account\": {\n        \"name\": \"\",\n        \"environment\": \"\",\n        \"locked\": \"true|false\",\n        \"orgID\": \"\",\n        \"subID\": \"\",\n        \"createdDate\": \"\",\n        \"description\": \"\",\n        \"type\": \"\",\n        \"isOneWorld\": true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connections",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"accountID\": \"\",\n    \"subID\": \"\",\n    \"orgID\": \"\",\n    \"ownerID\": \"\",\n    \"runtimeInfo\": {\n        \"conEmail\": \"\",\n        \"connectionId\": \"\"\n    },\n    \"productCode\": \"\",\n    \"connectionType\": \"\",\n    \"account\": {\n        \"id\": \"\",\n        \"name\": \"\",\n        \"environment\": \"\",\n        \"locked\": \"\",\n        \"orgID\": \"\",\n        \"subID\": \"\",\n        \"createdDate\": \"\",\n        \"description\": \"\",\n        \"type\": \"\",\n        \"isOneWorld\": true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": \"\",\n        \"name\": \"\",\n        \"environment\": \"\",\n        \"locked\": \"\",\n        \"orgID\": \"\",\n        \"subID\": \"\",\n        \"createdDate\": \"\",\n        \"description\": \"\",\n        \"type\": \"\",\n        \"isOneWorld\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts/roles[existing]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Returns related roles\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.not.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts/roles?accountIDs=59280dbe3a7ef80f46b0a353%26592a77313a7ef80f46b0aa6b",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts",
+						"roles"
+					],
+					"query": [
+						{
+							"key": "accountIDs",
+							"value": "59280dbe3a7ef80f46b0a353%26592a77313a7ef80f46b0aa6b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts/roles[empty]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Returns related roles\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty; //todo check if we have an error message within body",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts/roles?accountIDs=",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts",
+						"roles"
+					],
+					"query": [
+						{
+							"key": "accountIDs",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts/roles[non-existent]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Returns related roles\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty; //todo check if we have an error message within body",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts/roles?accountIDs=dummy-account1,dummyaccount-2",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts",
+						"roles"
+					],
+					"query": [
+						{
+							"key": "accountIDs",
+							"value": "dummy-account1,dummyaccount-2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connections",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subID\": \"\",\n    \"ownerID\": \"\",\n    \"orgID\": \"\",\n    \"ownerID\": \"\",\n    \"ownerIDs\": \"\",\n    \"accountID\": \"\",\n    \"subID\": \"\",\n    \"environment\": \"\",\n    \"connectionEmail\": \"\",\n    \"normalize\": \"\",\n    \"productCode\": \"\",\n    \"connectionType\": \"\",\n    \"connectionId\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connections",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id/assign-users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id/assign-users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id",
+						"assign-users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id/users[existing]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Returns users for the give account\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.not.empty; //TODO further validate",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id/users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id",
+						"users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "592a77313a7ef80f46b0aa6b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id/users[non-existent]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Returns no users for the give dummy account\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id/users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id",
+						"users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "dummy-account"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id/users[empty]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Returns no users for the give dummy account\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id/users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id",
+						"users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts/:id/roles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"roles\": [{\n        \"id\": \"\",\n        \"name\": \"\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts/:id/roles",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts",
+						":id",
+						"roles"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts[non-existent-subId]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404); //TODO check if this 5XX",
+							"});",
+							"",
+							"pm.test(\"Returns empty response\", function () { //TODO validate repsose body",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts?orgID=59280d9e374192261cb996c3&subID=dummy-sub-id&type=ns&environment=Production&normalize=true",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": "59280d9e374192261cb996c3"
+						},
+						{
+							"key": "subID",
+							"value": "dummy-sub-id"
+						},
+						{
+							"key": "type",
+							"value": "ns"
+						},
+						{
+							"key": "environment",
+							"value": "Production"
+						},
+						{
+							"key": "normalize",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts[empty-subId]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404); //TODO check if this 5XX",
+							"});",
+							"",
+							"pm.test(\"Returns empty response\", function () { //TODO validate repsose body",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts?orgID=59280d9e374192261cb996c3&subID=&type=ns&environment=Production&normalize=true",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": "59280d9e374192261cb996c3"
+						},
+						{
+							"key": "subID",
+							"value": ""
+						},
+						{
+							"key": "type",
+							"value": "ns"
+						},
+						{
+							"key": "environment",
+							"value": "Production"
+						},
+						{
+							"key": "normalize",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Returns related accounts\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"    pm.expect(jsonData).is.lengthOf.above(0)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts?orgID=59280d9e374192261cb996c3&subID=59280d9e63196beb55df3f1b&type=ns&environment=Production&normalize=true",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": "59280d9e374192261cb996c3"
+						},
+						{
+							"key": "subID",
+							"value": "59280d9e63196beb55df3f1b"
+						},
+						{
+							"key": "type",
+							"value": "ns"
+						},
+						{
+							"key": "environment",
+							"value": "Production"
+						},
+						{
+							"key": "normalize",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts[non-existent-orgId]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404); //TODO check if this 5XX",
+							"});",
+							"",
+							"pm.test(\"Returns empty response\", function () { //TODO validate repsose body",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts?orgID=dummy-org-id&subID=59280d9e63196beb55df3f1b&type=ns&environment=Production&normalize=true",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": "dummy-org-id"
+						},
+						{
+							"key": "subID",
+							"value": "59280d9e63196beb55df3f1b"
+						},
+						{
+							"key": "type",
+							"value": "ns"
+						},
+						{
+							"key": "environment",
+							"value": "Production"
+						},
+						{
+							"key": "normalize",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/accounts[empty-orgId]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404); //TODO check if this 5XX",
+							"});",
+							"",
+							"pm.test(\"Returns empty response\", function () { //TODO validate repsose body",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/accounts?orgID=&subID=59280d9e63196beb55df3f1b&type=ns&environment=Production&normalize=true",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "orgID",
+							"value": ""
+						},
+						{
+							"key": "subID",
+							"value": "59280d9e63196beb55df3f1b"
+						},
+						{
+							"key": "type",
+							"value": "ns"
+						},
+						{
+							"key": "environment",
+							"value": "Production"
+						},
+						{
+							"key": "normalize",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/account/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{iamDomain}}/tam/account/:id",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/connection/:id/unassign-users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{iamDomain}}/tam/connection/:id/unassign-users",
+					"host": [
+						"{{iamDomain}}"
+					],
+					"path": [
+						"tam",
+						"connection",
+						":id",
+						"unassign-users"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
